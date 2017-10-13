@@ -1,7 +1,7 @@
-#多个button在tableViewCell上的处理及单个button在tableViewCell上的重用处理
+# 多个button在tableViewCell上的处理及单个button在tableViewCell上的重用处理
 最近项目上出现了这种需要在一个cell上多个button的处理问题以及自己在项目中遇到的重用问题的记录,遂在此记录.
 
-##实现步骤:
+## 实现步骤:
 1.主界面的布局.
 
 * 布局
@@ -21,23 +21,23 @@
 * 按钮的点击事件
 * 传递选中按钮
 
-##整体效果图:
+## 整体效果图:
 ![整体效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/整体效果图.gif)
 
-##功能实现:
+## 功能实现:
 
-###1.主界面的布局.
+### 1.主界面的布局.
 
 ![主界面](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/主界面.jpg)
 
-####(1)声明多个button处理的数组addressArray,单个button处理的数组taskArray
+#### (1)声明多个button处理的数组addressArray,单个button处理的数组taskArray
 ```
 @property (nonatomic, copy)NSArray *addressArray;
 
 @property (nonatomic, copy)NSArray *taskArray;
 ```
 
-####(2)section数目
+#### (2)section数目
 
 ```
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -48,7 +48,7 @@
 
 分成 section = 0和 section = 1来处理
 
-####(3)cell布局
+#### (3)cell布局
 
 ```
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,7 +142,7 @@
 ```
 对两个点击事件的处理
 
-####(4)需要通过选中人的数量计算row高度
+#### (4)需要通过选中人的数量计算row高度
 ```
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -178,7 +178,7 @@
 }
 ```
 
-####(5)选择多个button点击处理
+#### (5)选择多个button点击处理
 ```
 - (void)addressClick:(UIButton *)sender {
     
@@ -192,7 +192,7 @@
 }
 ```
 
-####(6)选择单个button点击处理
+#### (6)选择单个button点击处理
 ```
 // 因为之后要添加headerView的收起功能,所以直接添加的是手势
 - (void)taskClick:(UITapGestureRecognizer *)sender{
@@ -207,14 +207,14 @@
 }
 ```
 
-###2.多个button在tableViewCell上的处理
+### 2.多个button在tableViewCell上的处理
 
 ![AddressViewController控制器](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/AddressViewController.jpg)
 
 这里tableView可以用Grouped类型也可以用Plain类型
-####(1)对cell进行布局
+#### (1)对cell进行布局
 for循环创建button并设置好点击后颜色的变化
-####(2)计算高度
+#### (2)计算高度
 在赋值承载多个button的cell模型Address中来计算并返回高度
 
 ```
@@ -254,7 +254,7 @@ static const CGFloat buttonHeight = 25;
 }
 
 ```
-####(3)按钮的点击事件
+#### (3)按钮的点击事件
 ```
 - (void)userButtonClick:(UIButton *)button {
     
@@ -296,7 +296,7 @@ static const CGFloat buttonHeight = 25;
 }
 ```
 
-####(4)传递选中按钮
+#### (4)传递选中按钮
 在AddressViewController控制器中执行代理方法
 
 ```
@@ -317,16 +317,16 @@ static const CGFloat buttonHeight = 25;
     [self.navigationController popViewControllerAnimated:YES];
 }
 ```
-####(5)效果图
+#### (5)效果图
 ![多个button处理效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/多个button处理效果图.gif)
 
-###3.单个button在tableViewCell上的重用处理
+### 3.单个button在tableViewCell上的重用处理
 
 ![TaskViewController控制器](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/TaskViewController.jpg)
 
-####(1)对cell进行布局
+#### (1)对cell进行布局
 进行基本的布局即可
-####(2)添加选中标记
+#### (2)添加选中标记
 
 给在承载单个button的cell模型Task中添加isSelected属性
 
@@ -336,7 +336,7 @@ static const CGFloat buttonHeight = 25;
 @property (nonatomic, assign)BOOL isSelected;
 ```
 
-####(3)按钮的点击事件
+#### (3)按钮的点击事件
 ```
 - (void)imageButtonClick:(UIButton *)sender {
     
@@ -349,7 +349,7 @@ static const CGFloat buttonHeight = 25;
 }
 ```
 
-####(4)传递选中按钮
+#### (4)传递选中按钮
 在TaskViewController控制器中执行代理方法
 
 ```
@@ -377,9 +377,9 @@ static const CGFloat buttonHeight = 25;
     [self.navigationController popViewControllerAnimated:YES];
 }
 ```
-####(5)效果图
+#### (5)效果图
 ![单个button处理效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/单个button处理效果图.gif)
 
-附上[Demo](https://github.com/LitBr/SignDemo)地址
+附上[Demo](https://github.com/LitBr/ReuseTableViewDemo)地址
 
 有什么问题可以留言,共同学习~
