@@ -22,13 +22,13 @@
 * 传递选中按钮
 
 ##整体效果图:
-![整体效果图](/Users/xiaoqi/Desktop/多个button/整体效果图.gif)
+![整体效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/整体效果图.gif)
 
 ##功能实现:
 
 ###1.主界面的布局.
 
-![主界面](/Users/xiaoqi/Desktop/多个button/主界面.jpg)
+![主界面](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/主界面.jpg)
 
 ####(1)声明多个button处理的数组addressArray,单个button处理的数组taskArray
 ```
@@ -209,7 +209,7 @@
 
 ###2.多个button在tableViewCell上的处理
 
-![AddressViewController控制器](/Users/xiaoqi/Desktop/多个button/AddressViewController.jpg)
+![AddressViewController控制器](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/AddressViewController.jpg)
 
 这里tableView可以用Grouped类型也可以用Plain类型
 ####(1)对cell进行布局
@@ -318,11 +318,11 @@ static const CGFloat buttonHeight = 25;
 }
 ```
 ####(5)效果图
-![多个button处理效果图](/Users/xiaoqi/Desktop/多个button/多个button处理效果图.gif)
+![多个button处理效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/多个button处理效果图.gif)
 
 ###3.单个button在tableViewCell上的重用处理
 
-![TaskViewController控制器](/Users/xiaoqi/Desktop/多个button/TaskViewController.jpg)
+![TaskViewController控制器](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/TaskViewController.jpg)
 
 ####(1)对cell进行布局
 进行基本的布局即可
@@ -378,7 +378,7 @@ static const CGFloat buttonHeight = 25;
 }
 ```
 ####(5)效果图
-![单个button处理效果图](/Users/xiaoqi/Desktop/多个button/单个button处理效果图.gif)
+![单个button处理效果图](https://github.com/LitBr/ReuseTableViewDemo/raw/master/多个button/单个button处理效果图.gif)
 
 附上[Demo](https://github.com/LitBr/SignDemo)地址
 
