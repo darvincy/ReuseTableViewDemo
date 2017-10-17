@@ -86,7 +86,9 @@ static NSString *taskIdentifier = @"TaskCell";
                 UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(contentToLeftWidth, 0, SCREEN_WIDTH*2/3, firstSectionHeight)];
                 contentLabel.font = [UIFont systemFontOfSize:15];
                 contentLabel.textColor = RGB(170,170,170, 0.75);
-                contentLabel.text = @"请选择多个button";
+                if (self.addressArray.count == 0) {
+                    contentLabel.text = @"请选择多个button";
+                }
                 [cell addSubview:contentLabel];
                 
                 UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -100,22 +102,22 @@ static NSString *taskIdentifier = @"TaskCell";
                     lines = array.count/3;
                 }
                 if (lines < 3) {
-                    scrollView.frame = CGRectMake(contentToLeftWidth, 0, SCREEN_WIDTH - contentToLeftWidth, 33*lines);
+                    scrollView.frame = CGRectMake(contentToLeftWidth, 0, SCREEN_WIDTH - contentToLeftWidth, firstSectionHeight*lines);
                 } else {
-                    scrollView.frame = CGRectMake(contentToLeftWidth, 0, SCREEN_WIDTH - contentToLeftWidth, 33*3);
+                    scrollView.frame = CGRectMake(contentToLeftWidth, 0, SCREEN_WIDTH - contentToLeftWidth, firstSectionHeight*3);
                 }
-                scrollView.contentSize = CGSizeMake(SCREEN_WIDTH - contentToLeftWidth, 33*lines);
+                scrollView.contentSize = CGSizeMake(SCREEN_WIDTH - contentToLeftWidth, firstSectionHeight*lines);
                 scrollView.bounces = NO;
                 // 选中人的集合
                 for (NSInteger i = 0; i < array.count; i++) {
-                    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake((scrollView.width/3)*(i%3), 33*(i/3), scrollView.width/3, 33)];
+                    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake((scrollView.width/3)*(i%3), firstSectionHeight*(i/3), scrollView.width/3, firstSectionHeight)];
                     subView.backgroundColor = [UIColor whiteColor];
                     [scrollView addSubview:subView];
                     // 图标
                     UIImageView *iconView = [[UIImageView alloc] init];
                     iconView.image = [UIImage imageNamed:@"icon_people"];
                     [iconView sizeToFit];
-                    iconView.frame = CGRectMake(5, (33 - iconView.height)/2, iconView.width, iconView.height);
+                    iconView.frame = CGRectMake(5, (firstSectionHeight - iconView.height)/2, iconView.width, iconView.height);
                     [subView addSubview:iconView];
                     UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(iconView.right + 11, 0, subView.width - iconView.right - 11, subView.height)];
                     contentLabel.font = [UIFont systemFontOfSize:13];
@@ -288,10 +290,12 @@ static NSString *taskIdentifier = @"TaskCell";
                 } else {
                     lines = self.addressArray.count/3;
                 }
-                if (lines < 3) {
-                    return lines*3*firstSectionHeight/4;
+                if (lines < 3 && lines > 0) {
+                    return lines*firstSectionHeight;
+                } else if (lines == 0) {
+                    return firstSectionHeight;
                 } else {
-                    return 3*3*firstSectionHeight/4;
+                    return 3*firstSectionHeight;
                 }
             }
         }
